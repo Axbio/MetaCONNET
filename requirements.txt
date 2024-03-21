@@ -1,0 +1,8 @@
+glob
+argparse
+subprocess
+tensorflow
+numpy
+keras
+multiprocessing
+pandas
