@@ -24,14 +24,12 @@ MetaCONNET input
 
 optional arguments:
   -h, --help            show this help message and exit
-  --sr SR SR, --shortread SR SR
-                        NGS read fastq/fasta read files
-  --lr LR, --longread LR
-                        long read fastq/fasta file
-  --c C, --contigs C    contig fastq/fastq file
-  --o O, --out O        output folder
-  --n N, --name N       task name
-  --t T, --threads T    thread number
+  --sr SR SR            NGS read fastq/fasta read files
+  --lr LR               long read fastq/fasta file
+  --c C                 contig fastq/fastq file
+  --o O                 output folder
+  --n N                 task name
+  --t T                 thread number
   --v, --version        show program's version number and exit
 ```
 
@@ -48,3 +46,7 @@ These directories and files will be created during polishing at the working dire
 - <task_name>_polished.fasta
 
 The polished fasta is in <task_name>_polished.fasta as a softlink to last fasta in round2 recovery phase
+
+## Testing
+
+for testing purposes, you can `cd` to the test folder and execute test.sh. The test data is also in the test folder.     
