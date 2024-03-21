@@ -1,8 +1,4 @@
-glob
-argparse
-subprocess
-tensorflow
-numpy
-keras
-multiprocessing
-pandas
+tensorflow==2.8.0
+numpy==1.22.3
+keras==2.8.0
+pandas==1.4.2

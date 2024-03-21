@@ -1,4 +1,3 @@
-import pathlib
 from setuptools import setup, Extension
 import numpy
 import os
@@ -22,6 +21,9 @@ setup(
     packages=["pipeline"],
     install_requires=[
         "pandas", 
+        "keras",
+        "tensorflow",
+        "pandas"
         ], 
     package_data={'': ['training_model/meta_correction_ont_normalize.keras',
     'training_model/meta_recovery_ont_normalize.keras' ],
