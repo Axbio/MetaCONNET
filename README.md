@@ -36,6 +36,7 @@ optional arguments:
 ```
 
 `--lr` and `--c` are required. If you want to combine short reads, please use `--sr` with read1 and read2 file path.   
+You can use `--o` to specify a working directory.    
 You will need to specify a name for the task as the future prefix for the output file by `--n`.    
 MetaCONNT has allowed multithreading, so please remember to include thread numbers `--t` for parallel.
 
