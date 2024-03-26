@@ -50,3 +50,9 @@ The polished fasta is in <task_name>_polished.fasta as a softlink to last fasta 
 ## Testing
 
 for testing purposes, you can `cd` to the test folder and execute test.sh. The test data is also in the test folder.     
+
+## Demo
+https://github.com/Axbio/MetaCONNET/assets/164155007/39fa76ec-51ff-4761-b011-de0701c89f9f
+
+
+
