@@ -60,5 +60,5 @@ The polished fasta is in <task_name>_polished.fasta as a softlink to last fasta 
 
 ## Testing
 
-for testing purposes, you can `cd` to the test folder and execute test.sh. The test data is also in the test folder.     
+for testing purposes, you can `cd` to the `test` folder and execute `bash test.sh`. The test data read : `longreads.fastq` and contigs: `contigs.fasta` are also in the test folder.     
 
