@@ -20,13 +20,15 @@ setup(
     "pipeline/recover.sh", "pipeline/pipeline.sh", "pipeline/pipeline_tgs.sh"],              
     packages=["pipeline"],
     install_requires=[
-        "pandas", 
-        "keras",
         "tensorflow",
-        "pandas"
+        "numpy",
+        "pandas",
+        "keras"
         ], 
     package_data={'': ['training_model/meta_correction_ont_normalize.keras',
-    'training_model/meta_recovery_ont_normalize.keras' ],
+    'training_model/meta_recovery_ont_normalize.keras', 
+    'training_model/r10_recovery.keras', 
+    'training_model/r10_correction.keras'],
     },
     include_package_data=True,
     entry_points={

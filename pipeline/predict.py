@@ -1,8 +1,6 @@
 import os, sys
 import logging
-import tensorflow as tf
 import numpy as np
-import keras
 from .preparator import DataPreparator
 import argparse
 import pandas as pd
@@ -20,6 +18,8 @@ logging.getLogger('tensorflow').disabled = True
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 manager = mp.Manager()
+import tensorflow as tf
+import keras
 
 class Scheduler:
     def __init__(self, cpu_number, bam,  feat_size, model, chunks, phase=0):

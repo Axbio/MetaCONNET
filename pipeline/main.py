@@ -1,7 +1,7 @@
 import argparse
 import subprocess
 import os
-from .config_parser import MODEL1, MODEL2, VERSION
+from .config_parser import R9_MODEL1, R9_MODEL2, R10_MODEL1, R10_MODEL2, VERSION
 
 def argparsers():
     parser = argparse.ArgumentParser(description='MetaCONNET input', prog="MetaCONNET")
@@ -17,16 +17,23 @@ def argparsers():
                     help='task name', required=True)  
     parser.add_argument('--t',
                     help='thread number', required=False)  
-    parser.add_argument('--v','--version', action='version', version=f'%(prog)s {VERSION}')
-
+    parser.add_argument('--v','--version', action='version', 
+                        version=f'%(prog)s {VERSION}')
+    parser.add_argument('--fc', '--flowcell',
+                    help='flow cell version R9, R10', required=False)  
     return parser
 
 def run():
     parser = argparsers()
     args = parser.parse_args()
         
-    model1 = MODEL1
-    model2 = MODEL2
+    model1 = R9_MODEL1
+    model2 = R9_MODEL2
+    
+    if args.fc and args.fc.upper() == "R10": 
+        model1 = R10_MODEL1
+        model2 = R10_MODEL2
+    
     thread = os.cpu_count()
     if args.t :  
         thread = int(args.t)
