@@ -60,10 +60,45 @@ The polished fasta is in <task_name>_polished.fasta as a softlink to last fasta 
 
 ## Testing
 
-for testing purposes, you can `cd` to the `test` folder and execute `bash test.sh`. The test data read : `longreads.fastq` and contigs: `contigs.fasta` are also in the test folder.     
+For testing purposes, you can `cd` to the `test` folder and execute `bash test.sh`. The test data read : `longreads.fastq` and contigs: `contigs.fasta` are also in the test folder.     
 
-## Demo
-https://github.com/Axbio/MetaCONNET/assets/164155007/39fa76ec-51ff-4761-b011-de0701c89f9f
+
+## Model training
+
+For who is interested in training a model of their own, first of all, the models are under `~/pipeline/training_model` .
+
+The training codes are under `~/train`
+
+Step 1 : Prepare training data.    
+
+Run `prepare_training.sh`
+
+Example :
+```shell
+#corretion
+wdir=phase1
+bam=map.bam # reads to assembly bam
+assembly=assembly.fasta
+ref=ref.fasta
+time bash prepare_training.sh $wdir $ref  $bam $assembly 0 dataset_name
+#recovery
+wdir=phase2
+time bash prepare_training.sh $wdir $ref  $bam $assembly 1 dataset_name
+```
+Step 2 : Run training.    
+This requires you to have a gpu and a tensorflow-gpu ready environment
+
+Example :
+```shell
+model1=meta_correction
+model2=meta_recovery
+#corretion
+metaconnet_train -epochs 200 -parallel phase1/dataset_name.parallel -train phase1 -o $model1 -phase correction
+#recovery
+metaconnet_train -epochs 200 -parallel phase2/dataset_name.parallel -train phase2 -o $model2 -phase recovery
+```
+
+This will train 200 epochs of the training datasets and save the final epoch model and each epoch checkpoint. You can load the final model and find the best model checkpoint and save to keras models.
 
 
 

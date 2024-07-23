@@ -5,7 +5,14 @@ import keras
 import pandas as pd
 import glob
 from keras.layers import Dropout
-from config_parser import connet_logger
+import logging
+import sys
+
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
+format= '%(asctime)s : %(levelname)s %(message)s',
+datefmt="%Y-%m-%d %A %H:%M:%S"
+)
+connet_logger = logging.getLogger("CONNET")
 
 SEED = 42
 METRICS = [
@@ -288,7 +295,7 @@ class Recovery:
         connet_logger.info(f"##########Evaluation End############")
         connet_logger.info(f"####################################")
 
-if __name__ == '__main__':
+def run ():
     import argparse
     """
     
@@ -319,3 +326,6 @@ if __name__ == '__main__':
     else:
         model.train(int(args.epochs))
         model.evaluate()
+
+if __name__ == '__main__':
+    run()

@@ -32,7 +32,7 @@ setup(
     },
     include_package_data=True,
     entry_points={
-        "console_scripts": ["metaconnet=pipeline.main:run"]
+        "console_scripts": ["metaconnet=pipeline.main:run", "metaconnet_prepare=pipeline.preparator:run", "metaconnet_train=train.train:run"]
     },
     ext_modules=[cos_module_np]
 )

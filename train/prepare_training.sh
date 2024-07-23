@@ -2,6 +2,8 @@
 
 echo "Prepare training files for CONNET model training"
 #
+SCRIPT_FILE=$(readlink -f $0)
+SCRIPT_DIR=$(dirname $SCRIPT_FILE)
 
 wdir=$1
 ref=$2
@@ -22,19 +24,19 @@ minimap2 -a -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-
 
 echo "minimap2 -a -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 24  $assembly $ref > $wdir/$tag.sam"
 
-python3 extract_alignment.py $wdir/$tag.sam
+python3 $SCRIPT_DIR/extract_alignment.py $wdir/$tag.sam
 
-python3 from_pos_to_fa.py -pos $wdir/$tag.alignment  -ref $ref  -contigs $assembly  -tag $tag
-python3 split_training.py $wdir/$tag.region 1000000
+python3 $SCRIPT_DIR/from_pos_to_fa.py -pos $wdir/$tag.alignment  -ref $ref  -contigs $assembly  -tag $tag
+python3 $SCRIPT_DIR/split_training.py $wdir/$tag.region 1000000
 
 echo "
-python3 extract_alignment.py $wdir/$tag.sam
+python3 $SCRIPT_DIR/extract_alignment.py $wdir/$tag.sam
 
-python3 from_pos_to_fa.py -pos $wdir/$tag.alignment  -ref $ref  -contigs $assembly  -tag $tag
-python3 split_training.py $wdir/$tag.region 1000000
+python3 $SCRIPT_DIR/from_pos_to_fa.py -pos $wdir/$tag.alignment  -ref $ref  -contigs $assembly  -tag $tag
+python3 $SCRIPT_DIR/split_training.py $wdir/$tag.region 1000000
 "
 
 echo "prepare labeled tensors"
-python3 preparator.py -bam $bam  -ref $label  -parallel $wdir/$tag.parallel  -o $wdir -phase $phase
+metaconnet_prepare -bam $bam  -ref $label  -parallel $wdir/$tag.parallel  -o $wdir -phase $phase
 
-echo "python3 preparator.py -bam $bam  -ref $label  -parallel $wdir/$tag.parallel  -o $wdir -phase $phase"
+echo "metaconnet_prepare -bam $bam  -ref $label  -parallel $wdir/$tag.parallel  -o $wdir -phase $phase"

@@ -116,9 +116,7 @@ class DataPreparator:
             arr = np.array(set_y)
             return arr.reshape(batch_num, self.time_steps, 6)
 
-if __name__ == '__main__':
-
-
+def run ():
     parser = argparse.ArgumentParser(description='Split bam into pileup tensors')
     parser.add_argument('-bam')
     parser.add_argument('-ref')
@@ -150,4 +148,8 @@ if __name__ == '__main__':
             np.savez(os.path.join(args.o, f"training_{ctg}_{start}_{end}.npz"), x=x_data, y=y_data)
         else:
             np.savez(os.path.join(args.o, f"testing_{ctg}_{start}_{end}.npz"), x=x_data, y=y_data)
+    
+if __name__ == '__main__':
+    run()
+
     
