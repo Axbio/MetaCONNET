@@ -10,6 +10,24 @@ A tool for metagenomics assemblies polishing, especially for Nanopore long read 
 
 The conda environment metaconda will be created and the metaconnet is in the conda env.
 
+~~~shell
+# if an error like "conda init before activate" appears
+# just run bash line by line
+conda env create -n metaconda -f env.yml # to create conda environment
+conda activate metaconda # activate the newly installed environment
+pip install . # install the current version of metaconnet by source code 
+~~~
+
+
+>If samtools has been unsuccessful to be installed, check the conda env channel order.    
+The channel order to correctly install is 
+~~~yaml
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+~~~
+
 ## No conda installation
 ### Step 1 : Install dependencies
 - minimap2
